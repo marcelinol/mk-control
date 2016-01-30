@@ -17,6 +17,11 @@ gem 'spring',        group: :development
 gem 'money-rails'
 gem 'devise'
 
+group :development do
+  gem 'better_errors'
+end
+
 group :test, :development do
   gem 'rspec-rails'
+  gem 'pry'
 end
