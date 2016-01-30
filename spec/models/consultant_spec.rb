@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Consultant, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    let(:consultant) { Consultant.new(name: nil) }
+
+    it { expect(consultant).not_to be_valid }
+  end
 end
