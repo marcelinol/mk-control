@@ -1,6 +1,7 @@
 *.rbc
 capybara-*.html
 .rspec
+rails_commands.rb
 /log
 /tmp
 /db/*.sqlite3
