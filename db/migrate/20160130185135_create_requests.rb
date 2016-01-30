@@ -1,8 +1,8 @@
 class CreateRequests < ActiveRecord::Migration
   def change
     create_table :requests do |t|
-      t.text :details
-      t.integer :consultant_id
+      t.text       :details
+      t.references :consultant
 
       t.timestamps
     end
