@@ -13,6 +13,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
 
+#my gems
+gem 'money-rails'
+
 group :test, :development do
   gem 'rspec-rails'
 end
