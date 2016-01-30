@@ -4,13 +4,13 @@ class Request < ActiveRecord::Base
 
   validates :consultant, presence: true
 
-  def initialize(filename, consultant_id = 1)
-    @filename = filename
-    @consultant_id = counsultant_id
+  def import_list(filename)
+    # load_file
   end
 
   def load_file
-    File.open(Rails.root.join('public', 'uploads', filename), 'r') do |file|
+    File.open(Rails.root.join('public', 'uploads', @filename), 'r') do |file|
+      binding.pry
       #Parse CSV here
     end
   end
