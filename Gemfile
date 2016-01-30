@@ -15,6 +15,7 @@ gem 'spring',        group: :development
 
 #my gems
 gem 'money-rails'
+gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails'
