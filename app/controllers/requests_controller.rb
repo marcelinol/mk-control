@@ -12,7 +12,7 @@ class RequestsController < ApplicationController
       file.write(uploaded_io.read)
     end
 
-    Request.new(uploaded_io.original_filename)
+    Request.new(uploaded_io.original_filename).load_file
 
     redirect_to requests_index_path, status: 301
   end
