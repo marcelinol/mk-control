@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'requests#index'
 
-  get 'requests/index'
+  # Requests
+  get  '/pedidos/index', to: 'requests#index', as: 'requests_index'
+  get  '/pedidos/novo',  to: 'requests#new'
+  post '/requests/upload', to: 'requests#upload'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
