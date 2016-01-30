@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 20160130195123) do
     t.datetime "updated_at"
   end
 
+  create_table "products", force: true do |t|
+    t.integer  "code"
+    t.string   "name"
+    t.integer  "purchase_price",          default: 0,     null: false
+    t.string   "purchase_price_currency", default: "BRL", null: false
+    t.integer  "sales_price",             default: 0,     null: false
+    t.string   "sales_price_currency",    default: "BRL", null: false
+    t.integer  "points"
+    t.string   "product_type"
+    t.integer  "status",                  default: 0
+    t.integer  "request_id"
+    t.integer  "consultant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "requests", force: true do |t|
     t.text     "details"
     t.integer  "consultant_id"
