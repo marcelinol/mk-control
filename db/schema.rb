@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130201318) do
+ActiveRecord::Schema.define(version: 20160131230726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20160130201318) do
     t.decimal  "outcome"
     t.decimal  "income"
     t.decimal  "balance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "name"
+    t.string   "source"
+    t.integer  "status"
+    t.datetime "last_contact_date"
+    t.string   "email"
+    t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +50,10 @@ ActiveRecord::Schema.define(version: 20160130201318) do
     t.integer  "consultant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sale_id"
   end
+
+  add_index "products", ["sale_id"], name: "index_products_on_sale_id", using: :btree
 
   create_table "requests", force: true do |t|
     t.text     "details"
@@ -48,6 +62,15 @@ ActiveRecord::Schema.define(version: 20160130201318) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sales", force: true do |t|
+    t.integer  "customer_id"
+    t.decimal  "total_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sales", ["customer_id"], name: "index_sales_on_customer_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

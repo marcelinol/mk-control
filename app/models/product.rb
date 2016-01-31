@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :consultant
   belongs_to :request
+  belongs_to :sale
 
   validates :name, :consultant, :request, presence: true
 
