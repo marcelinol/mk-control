@@ -28,9 +28,7 @@ class Request < ActiveRecord::Base
           }
 
           handle_code(params)
-          handle_name(params)
-          handle_sales_price(params)
-          handle_points(params)
+          handle_weird_products(params)
 
           Product.create(params)
         end
@@ -49,15 +47,11 @@ class Request < ActiveRecord::Base
     end
   end
 
-  def handle_name(params)
-    params[:status] = "to_be_defined" if params[:name].match(/amostra/i)
+  def handle_weird_products(params)
+    params[:status] = "to_be_defined" if has_weird_behaviour?(params)
   end
 
-  def handle_sales_price(params)
-    params[:status] = "to_be_defined" if params[:sales_price] == 0
-  end
-
-  def handle_points(params)
-    params[:status] = "to_be_defined" if params[:points] == 0
+  def has_weird_behaviour?(params)
+    params[:sales_price] == 0 || params[:points] == 0 || params[:name].match(/amostra/i)
   end
 end
