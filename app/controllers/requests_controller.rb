@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
       file.write(uploaded_io.read)
     end
 
-    Request.new(Consultant.find(1)).import_list(file_path)
+    Request.new(consultant: Consultant.first).import_list(file_path)
 
     redirect_to requests_index_path, status: 301
   end

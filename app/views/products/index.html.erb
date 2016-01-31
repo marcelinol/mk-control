@@ -1,0 +1,18 @@
+<h1>PRODUTOS</h1>
+
+<table border="1" style="width:100%">
+  <tr>
+    <th>Nome</th>
+    <th>Status</th>
+    <th>Preço Pago</th>
+    <th>Preço de Venda</th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product_status(product.status).html_safe %> </td>
+      <td><%= product.purchase_price %></td>
+      <td><%= product.sales_price %></td>
+    </tr>
+  <% end %>
+</table>

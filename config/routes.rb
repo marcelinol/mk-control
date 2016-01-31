@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'requests#index'
+
+  # Products'
+  get 'produtos/index',  to: 'products#index', as: 'products_index'
+  get 'produtos/editar', to: 'products#edit',  as: 'products_edit'
 
   # Requests
-  get  '/pedidos/index', to: 'requests#index', as: 'requests_index'
-  get  '/pedidos/novo',  to: 'requests#new'
+  get  '/pedidos/index',   to: 'requests#index', as: 'requests_index'
+  get  '/pedidos/novo',    to: 'requests#new',   as: 'requests_new'
   post '/requests/upload', to: 'requests#upload'
+
+  devise_for :users
+  root 'requests#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
