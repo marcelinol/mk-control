@@ -1,0 +1,20 @@
+<h1>CLIENTES</h1>
+
+<table border="1" style="width:100%">
+  <tr>
+    <th>Nome</th>
+    <th>Conheço de onde?</th>
+    <th>Status</th>
+    <th>Último contato</th>
+  </tr>
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.name %></td>
+      <td><%= customer.source %> </td>
+      <td><%= customer.status %></td>
+      <td><%= customer.last_contact_date..try(:strftime, "%d, %B %Y") %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Adicionar novo cliente', new_customer_path %>

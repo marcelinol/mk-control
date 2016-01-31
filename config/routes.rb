@@ -1,11 +1,25 @@
 Rails.application.routes.draw do
 
+  # Sales
+  get 'vendas',            to: 'sales#index', as: 'sales_index'
+  get 'vendas/nova',       to: 'sales#new', as: 'new_sale'
+  get 'vendas/:id/editar', to: 'sales#edit', as: 'edit_sale'
+  get 'vendas/deletar',   to: 'sales#delete', as: 'delete_sale'
+  get 'vendas/:id',        to: 'sales#show', as: 'show_sale'
+
+  # Customers
+  get 'clientes',        to: 'customers#index',  as: 'customers_index'
+  get 'clientes/nova',   to: 'customers#new',    as: 'new_customer'
+  get 'clientes/editar', to: 'customers#edit',   as: 'edit_customer'
+  get 'clientes/:id',    to: 'customers#show',   as: 'show_customer'
+  post 'clientes/criar', to: 'customers#create', as: 'create_customer'
+
   # Products'
-  get 'produtos',  to: 'products#index', as: 'products_index'
-  get 'produtos/editar', to: 'products#edit',  as: 'edit_product'
+  get 'produtos',            to: 'products#index', as: 'products_index'
+  get 'produtos/:id/editar', to: 'products#edit',  as: 'edit_product'
 
   # Requests
-  get  '/pedidos',   to: 'requests#index', as: 'requests_index'
+  get  '/pedidos',         to: 'requests#index', as: 'requests_index'
   get  '/pedidos/novo',    to: 'requests#new',   as: 'new_request'
   post '/requests/upload', to: 'requests#upload'
 

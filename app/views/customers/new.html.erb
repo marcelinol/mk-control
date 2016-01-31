@@ -1,0 +1,13 @@
+<h1>ADICIONAR NOVA CLIENTE</h1>
+
+<%= form_tag action: "create" do %>
+  <p>Nome:
+  <p><%= text_field :customer, :name %>
+  <p>De onde eu conheço?
+  <p><%= text_field :customer, :source %>
+  <p>Email:
+  <p><%= text_field :customer, :email %>
+  <p>Observações
+  <p><%= text_area :customer, :observations %>
+  <p><%= submit_tag "Criar" %>
+<% end %>
