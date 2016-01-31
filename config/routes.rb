@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
   # Products'
-  get 'produtos/index',  to: 'products#index', as: 'products_index'
-  get 'produtos/editar', to: 'products#edit',  as: 'products_edit'
+  get 'produtos',  to: 'products#index', as: 'products_index'
+  get 'produtos/editar', to: 'products#edit',  as: 'edit_product'
 
   # Requests
-  get  '/pedidos/index',   to: 'requests#index', as: 'requests_index'
-  get  '/pedidos/novo',    to: 'requests#new',   as: 'requests_new'
+  get  '/pedidos',   to: 'requests#index', as: 'requests_index'
+  get  '/pedidos/novo',    to: 'requests#new',   as: 'new_request'
   post '/requests/upload', to: 'requests#upload'
 
   devise_for :users

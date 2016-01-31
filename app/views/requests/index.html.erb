@@ -3,3 +3,5 @@
 <% @requests.each_with_index do |request, i| %>
   <%= " - Pedido #{i+1} feito no dia #{request.created_at.strftime("%-d de %B de %Y")}" %>
 <% end %>
+
+<%= link_to 'Adicionar novo pedido', new_request_path %>
