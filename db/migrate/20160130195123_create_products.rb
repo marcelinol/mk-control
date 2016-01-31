@@ -3,8 +3,8 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
       t.integer    :code
       t.string     :name
-      t.money      :purchase_price
-      t.money      :sales_price
+      t.decimal    :purchase_price
+      t.decimal    :sales_price
       t.integer    :points
       t.string     :product_type
       t.integer    :status, default: 0

@@ -24,14 +24,14 @@ class Request < ActiveRecord::Base
           end
 
           name = row["Descrição"]
-          sales_price = row["Preço unitário de varejo"].to_money
+          sales_price = BigDecimal.new(row["Preço unitário de varejo"])
 
           if sales_price == 0
             status = "to_be_defined"
           end
 
           points = row["Pontos"].to_i
-          purchase_price = (sales_price * 0.65).to_money
+          purchase_price = (sales_price * 0.65)
 
           Product.create(code: code, name: name, sales_price: sales_price, points: points, consultant: consultant, request: self, purchase_price: purchase_price, status: status)
         end

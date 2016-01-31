@@ -20,12 +20,9 @@ ActiveRecord::Schema.define(version: 20160130201318) do
     t.string   "name"
     t.string   "nickname"
     t.string   "email"
-    t.integer  "outcome",          default: 0,     null: false
-    t.string   "outcome_currency", default: "BRL", null: false
-    t.integer  "income",           default: 0,     null: false
-    t.string   "income_currency",  default: "BRL", null: false
-    t.integer  "balance",          default: 0,     null: false
-    t.string   "balance_currency", default: "BRL", null: false
+    t.decimal  "outcome"
+    t.decimal  "income"
+    t.decimal  "balance"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,13 +30,11 @@ ActiveRecord::Schema.define(version: 20160130201318) do
   create_table "products", force: true do |t|
     t.integer  "code"
     t.string   "name"
-    t.integer  "purchase_price",          default: 0,     null: false
-    t.string   "purchase_price_currency", default: "BRL", null: false
-    t.integer  "sales_price",             default: 0,     null: false
-    t.string   "sales_price_currency",    default: "BRL", null: false
+    t.decimal  "purchase_price"
+    t.decimal  "sales_price"
     t.integer  "points"
     t.string   "product_type"
-    t.integer  "status",                  default: 0
+    t.integer  "status",         default: 0
     t.integer  "request_id"
     t.integer  "consultant_id"
     t.datetime "created_at"
@@ -49,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160130201318) do
   create_table "requests", force: true do |t|
     t.text     "details"
     t.integer  "consultant_id"
+    t.decimal  "cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
