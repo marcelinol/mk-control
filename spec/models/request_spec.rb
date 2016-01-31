@@ -40,6 +40,9 @@ RSpec.describe Request, :type => :model do
       request.import_list(file_path)
 
       expect(first_product).to eq(product_attributes)
+      expect(Product.count).to eq(19)
+      expect(Product.stocked.count).to eq(15)
+      expect(Product.to_be_defined.count).to eq(4)
     end
   end
 

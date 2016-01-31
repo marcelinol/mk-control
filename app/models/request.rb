@@ -17,7 +17,7 @@ class Request < ActiveRecord::Base
         quantity.times do
           sales_price = BigDecimal.new(row["Preço unitário de varejo"])
           params = {
-            code: handle_code(row["Código do produto"]),
+            code: row["Código do produto"],
             name: row["Descrição"],
             sales_price: sales_price,
             purchase_price: (sales_price * 0.65),
@@ -27,17 +27,25 @@ class Request < ActiveRecord::Base
             request: self
           }
 
+          handle_code(params)
+          handle_name(params)
+
           Product.create(params)
         end
       end
     end
   end
 
-  def handle_code(code_cell)
-    if code_cell.match(/^--/)
-      code = code_cell.match(/\d/)[0].to_i
+  def handle_code(params)
+    if params[:code].match(/^--/)
+      params[:code] = params[:code].match(/\d/)[0].to_i
+      params[:status] = "to_be_defined"
     else
-      code = code_cell.to_i
+      params[:code] = params[:code].to_i
     end
+  end
+
+  def handle_name(params)
+    params[:status] = "to_be_defined" if params[:name].match(/amostra/i)
   end
 end
