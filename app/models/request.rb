@@ -15,27 +15,29 @@ class Request < ActiveRecord::Base
         quantity = row["                   Quantidade Solicitada/Enviada/Cancelada"].match(/^\d/)[0].to_i
         status = "stock"
         quantity.times do
-
-          if row["Código do produto"].match(/^--/)
-            code = row["Código do produto"].match(/\d/)[0].to_i
-            status = "to_be_defined"
-          else
-            code = row["Código do produto"].to_i
-          end
-
-          name = row["Descrição"]
           sales_price = BigDecimal.new(row["Preço unitário de varejo"])
+          params = {
+            code: handle_code(row["Código do produto"]),
+            name: row["Descrição"],
+            sales_price: sales_price,
+            purchase_price: (sales_price * 0.65),
+            points: row["Pontos"].to_i,
+            status: 0,
+            consultant: consultant,
+            request: self
+          }
 
-          if sales_price == 0
-            status = "to_be_defined"
-          end
-
-          points = row["Pontos"].to_i
-          purchase_price = (sales_price * 0.65)
-
-          Product.create(code: code, name: name, sales_price: sales_price, points: points, consultant: consultant, request: self, purchase_price: purchase_price, status: status)
+          Product.create(params)
         end
       end
+    end
+  end
+
+  def handle_code(code_cell)
+    if code_cell.match(/^--/)
+      code = code_cell.match(/\d/)[0].to_i
+    else
+      code = code_cell.to_i
     end
   end
 end
