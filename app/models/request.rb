@@ -13,13 +13,27 @@ class Request < ActiveRecord::Base
     File.open(Rails.root.join('public', 'uploads', filename), 'r') do |file|
       CSV.foreach(file, headers: true) do |row|
         quantity = row["                   Quantidade Solicitada/Enviada/Cancelada"].match(/^\d/)[0].to_i
+        status = "stock"
         quantity.times do
-          code = row["Código do produto"].to_i
+
+          if row["Código do produto"].match(/^--/)
+            code = row["Código do produto"].match(/\d/)[0].to_i
+            status = "to_be_defined"
+          else
+            code = row["Código do produto"].to_i
+          end
+
           name = row["Descrição"]
-          sales_price = row["Preço unitário de varejo"].to_i
+          sales_price = row["Preço unitário de varejo"].to_money
+
+          if sales_price == 0
+            status = "to_be_defined"
+          end
+
           points = row["Pontos"].to_i
-          purchase_price = sales_price * 0.65
-          Product.create(code: code, name: name, sales_price: sales_price, points: points, consultant: consultant, request: self, purchase_price: purchase_price)
+          purchase_price = (sales_price * 0.65).to_money
+
+          Product.create(code: code, name: name, sales_price: sales_price, points: points, consultant: consultant, request: self, purchase_price: purchase_price, status: status)
         end
       end
     end

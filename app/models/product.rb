@@ -4,4 +4,6 @@ class Product < ActiveRecord::Base
 
   validates :name, :consultant, :request, presence: true
 
+  enum status: [:stock, :sold, :sample, :to_be_defined]
+
 end
