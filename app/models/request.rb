@@ -29,12 +29,16 @@ class Request < ActiveRecord::Base
 
           handle_code(params)
           handle_name(params)
+          handle_sales_price(params)
+          handle_points(params)
 
           Product.create(params)
         end
       end
     end
   end
+
+  private
 
   def handle_code(params)
     if params[:code].match(/^--/)
@@ -47,5 +51,13 @@ class Request < ActiveRecord::Base
 
   def handle_name(params)
     params[:status] = "to_be_defined" if params[:name].match(/amostra/i)
+  end
+
+  def handle_sales_price(params)
+    params[:status] = "to_be_defined" if params[:sales_price] == 0
+  end
+
+  def handle_points(params)
+    params[:status] = "to_be_defined" if params[:points] == 0
   end
 end
