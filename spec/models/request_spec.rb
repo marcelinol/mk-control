@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Request, :type => :model do
 
   def fixture(name)
-    File.open(File.join(Rails.root, 'spec', 'fixtures', 'files', filename))
+    File.open(File.join(Rails.root, 'spec', 'fixtures', 'files', name))
   end
 
   context 'validations' do
@@ -34,10 +34,10 @@ RSpec.describe Request, :type => :model do
     end
 
     let(:filename) { 'pedido2-marykay.csv' }
-    let(:imported_file) { fixture(filename) }
+    let(:file_path) { fixture(filename) }
 
     it 'creates first product' do
-      request.import_list(filename)
+      request.import_list(file_path)
 
       expect(first_product).to eq(product_attributes)
     end

@@ -8,11 +8,12 @@ class RequestsController < ApplicationController
 
   def upload
     uploaded_io = params[:request_csv]
-    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+    file_path = Rails.root.join('public', 'uploads', uploaded_io.original_filename)
+    File.open(file_path, 'wb') do |file|
       file.write(uploaded_io.read)
     end
 
-    Request.new(Consultant.find(1)).import_list(uploaded_io.original_filename)
+    Request.new(Consultant.find(1)).import_list(file_path)
 
     redirect_to requests_index_path, status: 301
   end

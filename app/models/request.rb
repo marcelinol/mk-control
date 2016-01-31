@@ -9,8 +9,8 @@ class Request < ActiveRecord::Base
     load_file(filename)
   end
 
-  def load_file(filename)
-    File.open(Rails.root.join('public', 'uploads', filename), 'r') do |file|
+  def load_file(file_path)
+    File.open(file_path, 'r') do |file|
       CSV.foreach(file, headers: true) do |row|
         quantity = row["                   Quantidade Solicitada/Enviada/Cancelada"].match(/^\d/)[0].to_i
         status = "stock"
