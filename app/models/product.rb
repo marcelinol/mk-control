@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
 
   enum status: [:stock, :sold, :sample, :to_be_defined]
 
-  scope :stocked,       -> { where(status: 0) }
+  scope :in_stock,       -> { where(status: 0) }
   scope :sold,          -> { where(status: 1) }
   scope :sample,        -> { where(status: 2) }
   scope :to_be_defined, -> { where(status: 3) }

@@ -1,2 +1,11 @@
-<h1>Sales#new</h1>
-<p>Find me in app/views/sales/new.html.erb</p>
+<h1>NOVA VENDA</h1>
+
+<%= form_tag action: 'create' do %>
+  <p><h2>Cliente:</h2>
+  <p><%= collection_select(:sale, :customer_id, @customers, :id, :name) %>
+
+  <p><h2>Produtos:</h2>
+  <p><%= collection_check_boxes(:sale, :products_ids, @products, :id, :name, item_wrapper_tag: :p) %>
+
+  <p><%= submit_tag "Criar" %>
+<% end %>

@@ -1,5 +1,26 @@
 class SalesController < ApplicationController
   def index
+    @sales = Sale.all
+  end
+
+  def new
+    @customers = Customer.all
+    @products = Product.in_stock
+  end
+
+  def create
+    binding.pry
+    sale = Sale.new(sale_params.except(:products_ids))
+    if sale.valid?
+      roducts_ids = params[:products_ids].reject(&:blank?)
+      Product.where(id: products_ids).each do |product|
+        product.sale = sale
+        product.save
+      end
+      sale.save
+    end
+
+    redirect_to sales_index_path
   end
 
   def show
@@ -8,9 +29,12 @@ class SalesController < ApplicationController
   def edit
   end
 
-  def new
+  def delete
   end
 
-  def delete
+  private
+
+  def sale_params
+    params.require(:sale).permit(:customer_id, :products_ids)
   end
 end

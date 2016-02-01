@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get 'vendas',            to: 'sales#index', as: 'sales_index'
   get 'vendas/nova',       to: 'sales#new', as: 'new_sale'
   get 'vendas/:id/editar', to: 'sales#edit', as: 'edit_sale'
-  get 'vendas/deletar',   to: 'sales#delete', as: 'delete_sale'
+  get 'vendas/deletar',    to: 'sales#delete', as: 'delete_sale'
   get 'vendas/:id',        to: 'sales#show', as: 'show_sale'
+  post 'ventas/criar',     to: 'sales#create', as: 'create_sale'
 
   # Customers
   get 'clientes',        to: 'customers#index',  as: 'customers_index'
