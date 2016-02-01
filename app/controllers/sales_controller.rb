@@ -12,7 +12,7 @@ class SalesController < ApplicationController
     binding.pry
     sale = Sale.new(sale_params.except(:products_ids))
     if sale.valid?
-      roducts_ids = params[:products_ids].reject(&:blank?)
+      products_ids = sale_params[:products_ids].reject(&:blank?)
       Product.where(id: products_ids).each do |product|
         product.sale = sale
         product.save
@@ -35,6 +35,6 @@ class SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:customer_id, :products_ids)
+    params.require(:sale).permit!
   end
 end

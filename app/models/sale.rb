@@ -9,7 +9,7 @@ class Sale < ActiveRecord::Base
   private
 
   def calculate_total_cost
-    total_cost = products.pluck(:sales_price).inject(0, :+)
+    self.total_cost = BigDecimal.new(products.pluck(:sales_price).inject(0, :+))
     self.save
   end
 end
