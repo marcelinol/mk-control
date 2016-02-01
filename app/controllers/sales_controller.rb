@@ -9,7 +9,6 @@ class SalesController < ApplicationController
   end
 
   def create
-    binding.pry
     sale = Sale.new(sale_params.except(:products_ids))
     if sale.valid?
       products_ids = sale_params[:products_ids].reject(&:blank?)

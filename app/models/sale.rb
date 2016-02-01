@@ -4,12 +4,11 @@ class Sale < ActiveRecord::Base
 
   validates :customer, presence: true
 
-  after_create :calculate_total_cost
+  before_save :calculate_total_cost
 
   private
 
   def calculate_total_cost
     self.total_cost = BigDecimal.new(products.pluck(:sales_price).inject(0, :+))
-    self.save
   end
 end

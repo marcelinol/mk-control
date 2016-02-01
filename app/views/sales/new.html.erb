@@ -5,7 +5,7 @@
   <p><%= collection_select(:sale, :customer_id, @customers, :id, :name) %>
 
   <p><h2>Produtos:</h2>
-  <p><%= collection_check_boxes(:sale, :products_ids, @products, :id, :name, item_wrapper_tag: :p) %>
+  <p><%= collection_check_boxes(:sale, :products_ids, @products, :id, :name) %>
 
   <p><%= submit_tag "Criar" %>
 <% end %>
