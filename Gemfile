@@ -15,6 +15,7 @@ gem 'spring',        group: :development
 
 #my gems
 gem 'devise'
+gem 'foundation-rails'
 
 group :development do
   gem 'better_errors'
