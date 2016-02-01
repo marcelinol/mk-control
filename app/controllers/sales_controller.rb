@@ -14,6 +14,7 @@ class SalesController < ApplicationController
       products_ids = sale_params[:products_ids].reject(&:blank?)
       Product.where(id: products_ids).each do |product|
         product.sale = sale
+        product.sold!
         product.save
       end
       sale.save
