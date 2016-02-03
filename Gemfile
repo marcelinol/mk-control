@@ -25,4 +25,5 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-doc'
+  gem 'factory_girl_rails'
 end
