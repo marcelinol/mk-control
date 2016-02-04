@@ -16,16 +16,17 @@ RSpec.describe Request, :type => :model do
     let(:consultant) { Consultant.create(name: 'testing') }
     let(:request)    { Request.new(consultant: consultant) }
     let(:purchase_price) { 37.00 * 0.65 }
-    let(:product_attributes)    do
+    let(:product_attributes) do
       {
-        "consultant_id" => consultant.id,
-        "request_id" => request.id,
-        "code" => 10081938,
-        "name" => 'Trio de Sombras Out of the Blue',
-        "sales_price" => 37,
-        "purchase_price" => purchase_price,
-        "points" => 15,
-        "status" => 0
+        'consultant_id'  => consultant.id,
+        'request_id'     => request.id,
+        'code'           => 10081938,
+        'name'           => 'Trio de Sombras Out of the Blue',
+        'sales_price'    => BigDecimal.new('37'),
+        'purchase_price' => BigDecimal.new(purchase_price.to_s),
+        'points'         => 15,
+        'status'         => 0,
+        'sale_id'        => nil
       }
     end
 
