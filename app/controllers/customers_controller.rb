@@ -18,6 +18,9 @@ class CustomersController < ApplicationController
   def edit
   end
 
+  def schedule_contact
+  end
+
   private
   def customer_params
     params.require(:customer).permit(:name, :source, :email, :observations)

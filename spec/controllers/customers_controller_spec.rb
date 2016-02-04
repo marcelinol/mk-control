@@ -9,6 +9,12 @@ RSpec.describe CustomersController, :type => :controller do
     end
   end
 
+  describe "GET schedule_contact" do
+    before { get :schedule_contact }
+
+    it { (expect(response).to be_success) }
+  end
+
   describe "GET show" do
     xit "returns http success" do
       get :show
