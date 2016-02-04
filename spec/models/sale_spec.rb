@@ -10,7 +10,7 @@ RSpec.describe Sale, :type => :model do
   context 'new sale' do
     let(:consultant) { build(:consultant) }
     let(:products)   { build_list(:product, 2, consultant: consultant) }
-    let(:sale)       { create(:sale).tap { |s| s.products << products } }
+    let!(:sale)      { create(:sale).tap { |s| s.products << products } }
 
     it 'marks product as sold and calculate total' do
       expect(Product.sold).to include(products.first)
