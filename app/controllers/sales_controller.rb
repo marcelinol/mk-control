@@ -9,7 +9,16 @@ class SalesController < ApplicationController
   end
 
   def create
-    sale = Sale.create(sale_params.except(:products_ids))
+    sale = Sale.new(sale_params.except(:products_ids))
+    if sale.valid?
+      products_ids = sale_params[:products_ids].reject(&:blank?)
+      Product.where(id: products_ids).each do |product|
+        product.sale = sale
+        product.sold!
+        product.save
+      end
+      sale.save
+    end
 
     redirect_to sales_index_path
   end
