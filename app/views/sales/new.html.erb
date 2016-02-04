@@ -3,6 +3,7 @@
 <%= form_tag action: 'create' do %>
   <p><h2>Cliente:</h2>
   <p><%= collection_select(:sale, :customer_id, @customers, :id, :name) %>
+  <p><%= link_to('Criar nova cliente', new_customer_path) %>
 
   <p><h2><%= @products.count %> Produtos:</h2>
 

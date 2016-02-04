@@ -18,11 +18,23 @@ class CustomersController < ApplicationController
   def edit
   end
 
+  def update
+    @customer = Customer.find(params[:id])
+
+    if @customer.update_attributes(params.except(:id, :action, :controller))
+      flash[:success] = "Profile updated"
+      redirect_to :root
+    else
+      render nothing: true
+    end
+  end
+
   def schedule_contact
+    @customer = Customer.find(params[:id])
   end
 
   private
   def customer_params
-    params.require(:customer).permit(:name, :source, :email, :observations)
+    params.require(:customer).permit(:name, :source, :email, :observations, :next_contact_date)
   end
 end

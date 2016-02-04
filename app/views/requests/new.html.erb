@@ -2,5 +2,5 @@ NOVO PEDIDO
 
 <%= form_tag({ action: :upload }, multipart: true) do %>
   <%= file_field_tag 'request_csv' %>
-  <%= submit_tag 'Enviar' %>
+  <%= submit_tag 'Enviar', class: 'button' %>
 <% end %>

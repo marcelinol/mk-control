@@ -1,0 +1,7 @@
+<%= form_for @customer, url: { action: :edit } do |f| %>
+  <p>Próximo contato para:
+  <p><%= f.date_field :next_contact_date, value: 2.days.from_now.to_date %>
+  <p>Alguma observação?
+  <p><%= f.text_area :observations %>
+  <p><%= f.submit "Salvar" %>
+<% end %>

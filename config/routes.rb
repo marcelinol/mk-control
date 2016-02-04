@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'clientes/:id',    to: 'customers#show',   as: 'show_customer'
   post 'clientes/criar', to: 'customers#create', as: 'create_customer'
   get 'clientes/:id/agendar-contato', to: 'customers#schedule_contact', as: 'schedule_contact_with_customer'
+  post 'clientes/:id',   to: 'customers#update', as: 'update_customer'
 
   # Products'
   get 'produtos',            to: 'products#index', as: 'products_index'
