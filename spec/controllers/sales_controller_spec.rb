@@ -10,14 +10,14 @@ RSpec.describe SalesController, :type => :controller do
   end
 
   describe "GET show" do
-    it "returns http success" do
+    xit "returns http success" do
       get :show
       expect(response).to be_success
     end
   end
 
   describe "GET edit" do
-    it "returns http success" do
+    xit "returns http success" do
       get :edit
       expect(response).to be_success
     end
@@ -31,7 +31,7 @@ RSpec.describe SalesController, :type => :controller do
   end
 
   describe "GET delete" do
-    it "returns http success" do
+    xit "returns http success" do
       get :delete
       expect(response).to be_success
     end
