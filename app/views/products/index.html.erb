@@ -1,18 +1,30 @@
-<h1>PRODUTOS</h1>
+<div class='row'>
+  <h2 class='mk-color-on-white'>PRODUTOS</h2>
+</div>
 
-<table border="1" style="width:100%">
-  <tr>
-    <th>Nome</th>
-    <th>Status</th>
-    <th>Preço Pago</th>
-    <th>Preço de Venda</th>
-  </tr>
-  <% @products.each do |product| %>
-    <tr>
-      <td><%= product.name %></td>
-      <td><%= product_status(product.status).html_safe %> </td>
-      <td><%= product.purchase_price %></td>
-      <td><%= product.sales_price %></td>
+<div class='row'>
+  <%= link_to 'Em estoque', products_index_path(status: :in_stock), class: 'secondary hollow button' %>
+  <%= link_to 'Vendidos', products_index_path(status: :sold), class: 'secondary hollow button' %>
+  <%= link_to 'Amostras', products_index_path(status: :sample), class: 'secondary hollow button' %>
+  <%= link_to 'Outros', products_index_path(status: :to_be_defined), class: 'secondary hollow button' %>
+  <%= link_to 'Todos', products_index_path, class: 'secondary hollow button' %>
+</div>
+
+<div class='row'>
+  <table border='1' style='width:100%' id='js-products-table'>
+    <tr class='mk-color-on-white'>
+      <th>Nome</th>
+      <th>Status</th>
+      <th>Preço Pago</th>
+      <th>Preço de Venda</th>
     </tr>
-  <% end %>
-</table>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><center><%= product_status(product.status).html_safe %></center></td>
+        <td><center><%= product.purchase_price %></center></td>
+        <td><center><%= product.sales_price %></center></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
