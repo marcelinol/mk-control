@@ -1,7 +1,10 @@
-<h1>CLIENTES</h1>
+<h2 class='mk-color-on-white'>
+  CLIENTES
+  <%= link_to 'Adicionar nova cliente', new_customer_path, class: 'small primary hollow button' %>
+</h2>
 
 <table border="1" style="width:100%">
-  <tr>
+  <tr class='mk-color-on-white'>
     <th>Nome</th>
     <th>Conheço de onde?</th>
     <th>Status</th>
@@ -16,5 +19,3 @@
     </tr>
   <% end %>
 </table>
-
-<%= link_to 'Adicionar nova cliente', new_customer_path %>

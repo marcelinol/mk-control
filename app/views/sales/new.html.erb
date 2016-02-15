@@ -1,16 +1,28 @@
-<h1>NOVA VENDA</h1>
+<div class='row'>
+  <h2 class='mk-color-on-white'>
+    NOVA VENDA
+  </h2>
+</div>
 
 <%= form_tag action: 'create' do %>
-  <p><h2>Cliente:</h2>
-  <p><%= collection_select(:sale, :customer_id, @customers, :id, :name) %>
-  <p><%= link_to('Criar nova cliente', new_customer_path) %>
+  <div class='row'>
+      <p><h3>Cliente:</h3>
+      <p class='large-4'><%= collection_select(:sale, :customer_id, @customers, :id, :name) %></p>
+      <p><%= link_to('Criar nova cliente', new_customer_path, class: 'secondary small hollow button') %>
+  </div>
 
-  <p><h2><%= @products.count %> Produtos:</h2>
+  <div class='row collapse'>
+    <p><h3>Produtos:</h3>
 
-  <%= collection_check_boxes(:sale, :products_ids, @products, :id, :name) do |b| %>
-    <p>
-    <%= b.check_box %> <%= b.object.name %>
-  <% end %>
+    <%= collection_check_boxes(:sale, :products_ids, @products, :id, :name) do |b| %>
+      <p>
+      <div class='large-5 columns'>
+        <%= b.check_box %> <%= b.object.name %>
+      </div>
+    <% end %>
+  </div>
 
-  <p><%= submit_tag "Criar" %>
+  <div class='row'>
+    <%= submit_tag "Criar" %>
+  </div>
 <% end %>

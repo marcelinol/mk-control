@@ -9,11 +9,15 @@
   <%= link_to 'Outros', products_index_path(status: :to_be_defined), class: 'secondary hollow button' %>
   <%= link_to 'Todos', products_index_path, class: 'secondary hollow button' %>
 
-  <div class='subheader large-3 columns'>
+  <div class='large-7 column'>
     <%= form_tag({ controller: 'products', action: 'search' }, { method: 'get' }) do %>
-      <%= label_tag :query, 'Busca:' %>
-      <%= text_field_tag :query %>
-      <%= submit_tag 'Buscar', class: 'secondary hollow button' %>
+      <div class='input-group'>
+        <%= label_tag(:query, 'Busca:', class: 'input-group-label') %>
+        <%= text_field_tag(:query, nil, class: 'input-group-field') %>
+        <div class='input-group-button'>
+          <%= submit_tag 'Buscar', class: 'secondary hollow button' %>
+        </div>
+      </div>
     <% end %>
   </div>
 
