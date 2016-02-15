@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  # Dashboard
+  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
+
   # Sales
-  get 'vendas',            to: 'sales#index', as: 'sales_index'
-  get 'vendas/nova',       to: 'sales#new', as: 'new_sale'
-  get 'vendas/:id/editar', to: 'sales#edit', as: 'edit_sale'
+  get 'vendas',            to: 'sales#index',  as: 'sales_index'
+  get 'vendas/nova',       to: 'sales#new',    as: 'new_sale'
+  get 'vendas/:id/editar', to: 'sales#edit',   as: 'edit_sale'
   get 'vendas/deletar',    to: 'sales#delete', as: 'delete_sale'
-  get 'vendas/:id',        to: 'sales#show', as: 'show_sale'
+  get 'vendas/:id',        to: 'sales#show',   as: 'show_sale'
   post 'ventas/criar',     to: 'sales#create', as: 'create_sale'
 
   # Customers
@@ -27,7 +30,7 @@ Rails.application.routes.draw do
   post '/requests/upload', to: 'requests#upload'
 
   devise_for :users
-  root 'requests#index'
+  root 'dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
