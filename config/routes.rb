@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   post 'clientes/:id',   to: 'customers#update', as: 'update_customer'
 
   # Products'
-  get 'produtos',            to: 'products#index', as: 'products_index'
-  get 'produtos/:id/editar', to: 'products#edit',  as: 'edit_product'
+  get 'produtos',            to: 'products#index',  as: 'products_index'
+  get 'produtos/:id/editar', to: 'products#edit',   as: 'edit_product'
+  get 'produtos/busca',      to: 'products#search', as: 'search_product'
 
   # Requests
   get  '/pedidos',         to: 'requests#index', as: 'requests_index'

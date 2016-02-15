@@ -8,6 +8,15 @@
   <%= link_to 'Amostras', products_index_path(status: :sample), class: 'secondary hollow button' %>
   <%= link_to 'Outros', products_index_path(status: :to_be_defined), class: 'secondary hollow button' %>
   <%= link_to 'Todos', products_index_path, class: 'secondary hollow button' %>
+
+  <div class='subheader large-3 columns'>
+    <%= form_tag({ controller: 'products', action: 'search' }, { method: 'get' }) do %>
+      <%= label_tag :query, 'Busca:' %>
+      <%= text_field_tag :query %>
+      <%= submit_tag 'Buscar', class: 'secondary hollow button' %>
+    <% end %>
+  </div>
+
 </div>
 
 <div class='row'>

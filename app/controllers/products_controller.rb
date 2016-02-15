@@ -9,4 +9,11 @@ class ProductsController < ApplicationController
 
   def edit
   end
+
+  def search
+    query = params[:query]
+    @products = Product.where('name ilike ?', "%#{query}%")
+
+    render 'index'
+  end
 end
