@@ -10,7 +10,7 @@
   <div class='column'>
     <div class='callout large'>
         <p  class='subheader'>Hoje você precisa falar com:</p>
-        <% @consultant.customers.pluck(:name).each do |customer_name| %>
+        <% @customers_for_today.each do |customer_name| %>
           <p class='lead'><%= customer_name %></p>
         <% end %>
     </div>
