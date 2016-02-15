@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
 
-    if @customer.update_attributes(params.except(:id, :action, :controller))
+    if @customer.update_attributes(customer_params)
       flash[:success] = "Profile updated"
       redirect_to :root
     else

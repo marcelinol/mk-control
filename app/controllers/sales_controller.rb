@@ -20,7 +20,7 @@ class SalesController < ApplicationController
       sale.save
     end
 
-    redirect_to schedule_contact_with_customer(id: sale_params[:customer_id])
+    redirect_to schedule_contact_with_customer_path(id: sale_params[:customer_id])
   end
 
   def show
