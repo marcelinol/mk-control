@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20160215004511) do
     t.string   "name"
     t.string   "nickname"
     t.string   "email"
-    t.decimal  "outcome"
-    t.decimal  "income"
-    t.decimal  "balance"
+    t.decimal  "outcome",    default: 0.0
+    t.decimal  "income",     default: 0.0
+    t.decimal  "balance",    default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
