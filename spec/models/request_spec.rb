@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Request, :type => :model do
+RSpec.describe Request do
 
   def fixture(name)
     File.open(File.join(Rails.root, 'spec', 'fixtures', 'files', name))
@@ -13,8 +13,8 @@ RSpec.describe Request, :type => :model do
   end
 
   context 'importing' do
-    let(:consultant) { Consultant.create(name: 'testing') }
-    let(:request)    { Request.new(consultant: consultant) }
+    let(:consultant) { create(:consultant, name: 'testing') }
+    let(:request)    { create(:request, consultant: consultant) }
     let(:purchase_price) { 37.00 * 0.65 }
     let(:product_attributes) do
       {
@@ -44,6 +44,21 @@ RSpec.describe Request, :type => :model do
       expect(Product.count).to eq(19)
       expect(Product.in_stock.count).to eq(15)
       expect(Product.to_be_defined.count).to eq(4)
+    end
+  end
+
+  context 'callbacks' do
+    let(:consultant) { create(:consultant) }
+    let(:request)    { create(:request, consultant: consultant) }
+    let(:filename)   { 'pedido2-marykay.csv' }
+    let(:file_path)  { fixture(filename) }
+
+    it "updates consultant's balance" do
+      expect(consultant.balance.to_i).to eq 0
+
+      request.import_list(file_path)
+
+      expect(consultant.balance.to_i).to be < 0
     end
   end
 

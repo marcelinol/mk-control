@@ -5,6 +5,8 @@ class Request < ActiveRecord::Base
 
   validates :consultant, presence: true
 
+  after_create :update_consultant_balance
+
   def import_list(filename)
     load_file(filename)
   end
@@ -52,5 +54,8 @@ class Request < ActiveRecord::Base
 
   def has_weird_behaviour?(params)
     params[:sales_price] == 0 || params[:points] == 0 || params[:name].match(/amostra/i)
+  end
+
+  def update_consultant_balance
   end
 end
