@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
 
   validates :consultant, presence: true
 
-  after_save :update_consultant_outcome
+  after_save :update_consultant_outcome, if: "self.total_cost_changed?"
 
   def import_list(filename)
     load_file(filename)
@@ -60,5 +60,6 @@ class Request < ActiveRecord::Base
 
   def update_consultant_outcome
     self.consultant.outcome += self.total_cost
+    self.consultant.save
   end
 end
