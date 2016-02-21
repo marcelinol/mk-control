@@ -16,6 +16,7 @@ class Sale < ActiveRecord::Base
 
   def update_consultant_income
     self.consultant.income += self.value
+    self.consultant.save
   end
 
   def must_update_consultant_income?
