@@ -1,5 +1,6 @@
 class Sale < ActiveRecord::Base
   belongs_to :customer
+  belongs_to :consultant
   has_many   :products
 
   validates :customer, presence: true
