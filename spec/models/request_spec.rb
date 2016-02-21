@@ -54,11 +54,11 @@ RSpec.describe Request do
     let(:file_path)  { fixture(filename) }
 
     it "updates consultant's balance" do
-      expect(consultant.balance.to_i).to eq 0
+      expect(consultant.outcome.to_i).to eq 0
 
       request.import_list(file_path)
 
-      expect(consultant.balance.to_i).to be < 0
+      expect(consultant.outcome.to_i).to be > 0
     end
   end
 

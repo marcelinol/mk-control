@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
 
   validates :consultant, presence: true
 
-  after_save :update_consultant_balance
+  after_save :update_consultant_outcome
 
   def import_list(filename)
     load_file(filename)
@@ -58,7 +58,7 @@ class Request < ActiveRecord::Base
     params[:sales_price] == 0 || params[:points] == 0 || params[:name].match(/amostra/i)
   end
 
-  def update_consultant_balance
-    self.consultant.balance -= self.total_cost
+  def update_consultant_outcome
+    self.consultant.outcome += self.total_cost
   end
 end
