@@ -5,4 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :consultant
+
+  after_create :create_consultant
+
+  private
+
+  def create_consultant
+    c = Consultant.new
+    c.save(validate: false)
+    self.consultant = c
+    self.save
+  end
 end
