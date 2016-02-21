@@ -11,6 +11,6 @@ class Customer < ActiveRecord::Base
   private
 
   def assign_consutant
-    self.update_attributes(consultant_id: Consultant.first.id)
+    self.update_attributes(consultant_id: 1)
   end
 end
