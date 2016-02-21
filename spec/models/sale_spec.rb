@@ -17,4 +17,20 @@ RSpec.describe Sale, :type => :model do
       expect(Product.sold).to include(products.last)
     end
   end
+
+  context 'callbacks' do
+    let(:consultant) { create(:consultant) }
+    let(:sale)      { create(:sale_with_product, consultant: consultant) }
+
+    it 'sets its value' do
+      expect(sale.value).to be > 0
+    end
+
+    it 'updates consultant income' do
+      expect(consultant.income).to eq 0
+
+      expect(sale.value).to be
+      expect(consultant.income).to be > 0
+    end
+  end
 end
