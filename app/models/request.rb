@@ -5,10 +5,12 @@ class Request < ActiveRecord::Base
 
   validates :consultant, presence: true
 
-  after_create :update_consultant_balance
+  after_save :update_consultant_outcome, if: "self.total_cost_changed?"
 
   def import_list(filename)
     load_file(filename)
+    self.total_cost = products.pluck(:purchase_price).inject { |total, price| total + price }
+    save
   end
 
   def load_file(file_path)
@@ -56,6 +58,8 @@ class Request < ActiveRecord::Base
     params[:sales_price] == 0 || params[:points] == 0 || params[:name].match(/amostra/i)
   end
 
-  def update_consultant_balance
+  def update_consultant_outcome
+    self.consultant.outcome += self.total_cost
+    self.consultant.save
   end
 end

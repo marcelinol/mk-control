@@ -13,7 +13,7 @@
   <% @sales.each do |sale| %>
     <tr>
       <td><%= sale.customer.name %></td>
-      <td><%= sale.total_cost %> </td>
+      <td><%= sale.value %> </td>
       <td><%= sale.created_at.strftime("%d, %B %Y") %></td>
       <td><%= sale.customer.last_contact_date.try(:strftime, "%d, %B %Y") || 'Nenhum' %></td>
     </tr>
