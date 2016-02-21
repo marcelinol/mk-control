@@ -11,7 +11,8 @@ class Consultant < ActiveRecord::Base
   private
 
   def update_balance
-    self.balance = self.income - self.outcome
+    new_balance = self.income - self.outcome
+    update_column(:balance, new_balance)
   end
 
   def must_update_balance?
