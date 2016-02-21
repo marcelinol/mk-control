@@ -9,11 +9,4 @@ RSpec.describe ProductsController, :type => :controller do
     end
   end
 
-  describe "GET edit" do
-    xit "returns http success" do
-      get :edit
-      expect(response).to be_success
-    end
-  end
-
 end
