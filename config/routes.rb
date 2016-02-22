@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # Dashboard
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
+  #Consultants
+  get 'bem-vinda',         to: 'consultants#initial_setup', as: 'consultant_initial_setup'
+  patch 'consultoras/:id', to: 'consultants#update',        as: 'update_consultant'
+
   # Sales
   get 'vendas',            to: 'sales#index',  as: 'sales_index'
   get 'vendas/nova',       to: 'sales#new',    as: 'new_sale'
@@ -30,7 +34,8 @@ Rails.application.routes.draw do
   get  '/pedidos/novo',    to: 'requests#new',   as: 'new_request'
   post '/requests/upload', to: 'requests#upload'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
+
   root 'dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
