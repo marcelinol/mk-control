@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def index
-    @requests = Request.all
+    @requests = Request.where(consultant: current_user.consultant)
   end
 
   def new
@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
       file.write(uploaded_io.read)
     end
 
-    Request.create(consultant: Consultant.first).import_list(file_path)
+    Request.create(consultant: current_user.consultant).import_list(file_path)
 
     redirect_to products_index_path, status: 301
   end
