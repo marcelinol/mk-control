@@ -15,14 +15,16 @@ RSpec.describe CustomersController, :type => :controller do
   end
 
   describe 'GET schedule_contact' do
-    before { get :schedule_contact }
+    let(:customer) { create(:customer) }
+
+    before { get :schedule_contact, params: customer }
 
     it { (expect(response).to be_success) }
   end
 
   describe 'POST update' do
     let!(:customer) { create(:customer, id: 1) }
-    before { post :update, { id: 1, next_contact_date: 2.days.from_now.to_date } }
+    before { post :update, { customer: { id: 1, next_contact_date: 2.days.from_now.to_date } } }
 
     it { (expect(response).to be_success) }
   end
