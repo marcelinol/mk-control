@@ -1,6 +1,7 @@
 class ConsultantsController < ApplicationController
   def initial_setup
     @consultant = current_user.consultant
+    render layout: 'dedicated'
   end
 
   def update
