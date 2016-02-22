@@ -9,7 +9,7 @@ class SalesController < ApplicationController
   end
 
   def create
-    sale_attr = { consultant_id: 1 }.merge(sale_params.except(:products_ids))
+    sale_attr = { consultant: current_user.consultant }.merge(sale_params.except(:products_ids))
     sale = Sale.new(sale_attr)
     if sale.valid?
       products_ids = sale_params[:products_ids].reject(&:blank?)

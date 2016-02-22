@@ -11,13 +11,4 @@ RSpec.describe Customer, :type => :model do
       expect(customer.errors.count).to eq(2)
     end
   end
-
-  context 'callbacks' do
-    let!(:first_consultant) { create(:consultant, id: 1) }
-    let(:customer)   { create(:customer) }
-
-    it 'assigns the first consultant (while devise is still off)' do
-      expect(customer.consultant_id).to eq 1
-    end
-  end
 end
