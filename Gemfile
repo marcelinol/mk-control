@@ -17,6 +17,10 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'foundation-rails'
 
+group :test do
+  gem "codeclimate-test-reporter", require: nil
+end
+
 group :development do
   gem 'better_errors'
 end
