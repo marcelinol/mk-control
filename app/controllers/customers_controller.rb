@@ -1,13 +1,14 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.where(consultant: current_user.consultant)
   end
 
   def new
   end
 
   def create
-    Customer.create(customer_params)
+    current_params = { consultant: current_user.consultant }.merge(customer_params)
+    Customer.create(current_params)
 
     redirect_to customers_index_path
   end

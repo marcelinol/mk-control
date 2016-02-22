@@ -1,0 +1,8 @@
+<div class='row large-5'>
+  <%= form_for @consultant, url: update_consultant_path(@consultant) do |f| %>
+    <p>Qual o seu nome?
+    <%= f.text_field :name, required: true %>
+    <p><%= f.submit "Ir para a Secretária MK", class: 'secondary hollow button' %>
+
+  <% end %>
+</div>
