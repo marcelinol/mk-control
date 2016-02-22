@@ -8,8 +8,9 @@ RSpec.describe Product, :type => :model do
   end
 
   context 'when product is assigned to a sale' do
-    let(:product) { create(:product) }
-    let(:sale)    { create(:sale) }
+    let(:consultant) { build(:consultant) }
+    let(:product)    { create(:product, consultant: consultant) }
+    let(:sale)       { create(:sale, consultant: consultant) }
 
     it 'is marked as sold' do
       sale.products << product
