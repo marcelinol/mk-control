@@ -1,11 +1,11 @@
 class SalesController < ApplicationController
   def index
-    @sales = Sale.all
+    @sales = Sale.where(consultant: current_user.consultant)
   end
 
   def new
-    @customers = Customer.all
-    @products = Product.in_stock
+    @customers = Customer.where(consultant: current_user.consultant)
+    @products = Product.where(consultant: current_user.consultant).in_stock
   end
 
   def create

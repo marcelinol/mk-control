@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
   def index
     if params[:status]
-      @products = Product.send(params[:status])
+      @products = Product.where(consultant: current_user.consultant).send(params[:status])
     else
-      @products = Product.all
+      @products = Product.where(consultant: current_user.consultant)
     end
   end
 
@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def search
     query = params[:query]
-    @products = Product.where('name ilike ?', "%#{query}%")
+    @products = Product.where(consultant: current_user.consultant).where('name ilike ?', "%#{query}%")
 
     render 'index'
   end

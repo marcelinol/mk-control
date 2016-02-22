@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def index
-    @requests = Request.all
+    @requests = Request.where(consultant: current_user.consultant)
   end
 
   def new
