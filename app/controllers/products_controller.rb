@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
   def search
     query = params[:query]
     @products = Product.where(consultant: current_user.consultant).where('name ilike ?', "%#{query}%")
