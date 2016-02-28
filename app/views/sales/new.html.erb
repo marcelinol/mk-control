@@ -6,16 +6,24 @@
 
 <%= form_tag action: 'create' do %>
   <div class='row'>
-      <p><h3>Cliente:</h3>
-      <p class='large-4'><%= collection_select(:sale, :customer_id, @customers, :id, :name) %></p>
-      <p><%= link_to('Criar nova cliente', new_customer_path, class: 'secondary small hollow button') %>
+    <div class='column large-4'>
+      <h3>Cliente:</h3>
+      <%= collection_select(:sale, :customer_id, @customers, :id, :name) %>
+      <%= link_to('Criar nova cliente', new_customer_path, class: 'secondary small hollow button') %>
+    </div>
+
+    <div class='column large-6'>
+      <h3>Data da venda:</h3>
+      <p class='large-4'><%= date_field :sale, :created_at, value: Date.today %>
+    </div>
   </div>
 
-  <div class='row collapse'>
-    <p><h3>Produtos:</h3>
+
+  <div class='row'>
+    <h3>Produtos:</h3>
 
     <%= collection_check_boxes(:sale, :products_ids, @products, :id, :name) do |b| %>
-      <p>
+
       <div class='large-5 columns'>
         <%= b.check_box %> <%= b.object.name %>
       </div>
@@ -23,6 +31,6 @@
   </div>
 
   <div class='row'>
-    <%= submit_tag "Criar" %>
+    <%= submit_tag "Criar", class: 'primary button' %>
   </div>
 <% end %>
