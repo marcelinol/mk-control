@@ -1,0 +1,8 @@
+pt-BR:
+  enums:
+    product:
+      status:
+        in_stock: 'Em estoque'
+        sold: 'Vendido'
+        sample: 'Amostra'
+        to_be_defined: 'A definir'

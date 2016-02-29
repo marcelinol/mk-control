@@ -15,6 +15,6 @@ class RequestsController < ApplicationController
 
     Request.create(consultant: current_user.consultant).import_list(file_path)
 
-    redirect_to products_index_path, status: 301
+    redirect_to products_path, status: 301
   end
 end

@@ -3,11 +3,11 @@
 </div>
 
 <div class='row'>
-  <%= link_to 'Em estoque', products_index_path(status: :in_stock), class: 'secondary hollow button' %>
-  <%= link_to 'Vendidos', products_index_path(status: :sold), class: 'secondary hollow button' %>
-  <%= link_to 'Amostras', products_index_path(status: :sample), class: 'secondary hollow button' %>
-  <%= link_to 'Outros', products_index_path(status: :to_be_defined), class: 'secondary hollow button' %>
-  <%= link_to 'Todos', products_index_path, class: 'secondary hollow button' %>
+  <%= link_to 'Em estoque', products_path(status: :in_stock), class: 'secondary hollow button' %>
+  <%= link_to 'Vendidos', products_path(status: :sold), class: 'secondary hollow button' %>
+  <%= link_to 'Amostras', products_path(status: :sample), class: 'secondary hollow button' %>
+  <%= link_to 'Outros', products_path(status: :to_be_defined), class: 'secondary hollow button' %>
+  <%= link_to 'Todos', products_path, class: 'secondary hollow button' %>
 
   <div class='large-7 column'>
     <%= form_tag({ controller: 'products', action: 'search' }, { method: 'get' }) do %>
@@ -26,6 +26,7 @@
 <div class='row'>
   <table border='1' style='width:100%' id='js-products-table'>
     <tr class='mk-color-on-white'>
+      <th></th>
       <th>Nome</th>
       <th>Status</th>
       <th>Preço Pago</th>
@@ -33,6 +34,7 @@
     </tr>
     <% @products.each do |product| %>
       <tr>
+        <td><%= link_to 'Editar', edit_product_path(product)  %></td>
         <td><%= product.name %></td>
         <td><center><%= product_status(product.status).html_safe %></center></td>
         <td><center><%= product.purchase_price %></center></td>

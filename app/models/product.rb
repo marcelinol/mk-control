@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
 
   after_save :handle_selling, if: 'sale_id_changed?'
 
-  enum status: [:stock, :sold, :sample, :to_be_defined]
+  enum status: [:in_stock, :sold, :sample, :to_be_defined]
 
   scope :in_stock,      -> { where(status: 0) }
   scope :sold,          -> { where(status: 1) }

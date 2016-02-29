@@ -16,6 +16,8 @@ gem 'spring',        group: :development
 #my gems
 gem 'devise'
 gem 'foundation-rails'
+gem 'simple_form'
+gem 'enum_help' # Used to handle enum fields in simple_form
 
 group :test do
   gem "codeclimate-test-reporter", require: nil

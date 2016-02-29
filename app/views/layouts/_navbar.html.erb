@@ -5,7 +5,7 @@
       <% if user_signed_in? %>
         <li><%= link_to 'Dashboard', dashboard_path, class: 'mk-color' %></li>
         <li><%= link_to 'Pedidos', requests_index_path, class: 'mk-color' %></li>
-        <li><%= link_to 'Produtos', products_index_path, class: 'mk-color' %></li>
+        <li><%= link_to 'Produtos', products_path, class: 'mk-color' %></li>
         <li><%= link_to 'Clientes', customers_index_path, class: 'mk-color' %></li>
         <li><%= link_to 'Vendas', sales_index_path, class: 'mk-color' %></li>
       <% else %>
