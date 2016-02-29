@@ -79,7 +79,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+   <<: *default
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
   database: mk-control_production
-  username: mk-control
+  pool: 5
+  password: <%= ENV['MK-CONTROL_DATABASE_USER'] %>
   password: <%= ENV['MK-CONTROL_DATABASE_PASSWORD'] %>
