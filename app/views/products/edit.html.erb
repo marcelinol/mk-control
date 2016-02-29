@@ -1,2 +1,15 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h1>EDITAR PRODUTO</h1>
+
+<div class='row large-4'>
+  <%= simple_form_for  @product do |f| %>
+
+    <%= f.input :name, label: 'Nome', placeholder: @product.name %>
+    <%= f.input :purchase_price %>
+    <%= f.input :sales_price %>
+    <%= f.input :points %>
+    <%= f.input :product_type %>
+    <%= f.input :status, include_blank: false %>
+    <%= f.button :submit, label: 'Editar', class: 'button' %>
+
+  <% end %>
+</div>

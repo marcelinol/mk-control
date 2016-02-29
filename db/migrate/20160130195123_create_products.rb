@@ -7,9 +7,9 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal    :sales_price
       t.integer    :points
       t.string     :product_type
-      t.integer    :status, default: 0
-      t.references :request
-      t.references :consultant
+      t.integer    :status,     default: 0
+      t.references :request,    index: true
+      t.references :consultant, index: true
 
       t.timestamps
     end

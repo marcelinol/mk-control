@@ -25,7 +25,7 @@ class Request < ActiveRecord::Base
             sales_price: sales_price,
             purchase_price: (sales_price * 0.65),
             points: row["Pontos"].to_i,
-            status: 'stock',
+            status: 'in_stock',
             consultant: consultant,
             request: self
           }

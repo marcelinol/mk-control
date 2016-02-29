@@ -7,7 +7,7 @@ module ProductsHelper
 
   def product_status_hash
     {
-      "stock"         => '<color="green">Em Estoque</color>',
+      "in_stock"         => '<color="green">Em Estoque</color>',
       "sold"          => '<color="red">Vendido</color>',
       "sample"        => 'Amostra',
       "to_be_defined" => 'A definir'

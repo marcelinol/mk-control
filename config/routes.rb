@@ -25,9 +25,11 @@ Rails.application.routes.draw do
   patch 'clientes/:id',   to: 'customers#update', as: 'update_customer'
 
   # Products'
-  get 'produtos',            to: 'products#index',  as: 'products_index'
+  get 'produtos',            to: 'products#index',  as: 'products'
   get 'produtos/:id/editar', to: 'products#edit',   as: 'edit_product'
+  get 'produto/:id',         to: 'products#show',   as: 'product'
   get 'produtos/busca',      to: 'products#search', as: 'search_product'
+  patch 'produto/:id',      to: 'products#update', as: 'update_product'
 
   # Requests
   get  '/pedidos',         to: 'requests#index', as: 'requests_index'
