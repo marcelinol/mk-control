@@ -36,3 +36,7 @@ group :test, :development do
   gem 'pry-doc'
   gem 'factory_girl_rails'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
