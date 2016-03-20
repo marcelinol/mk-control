@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.1.5'
 
 gem 'rails', '4.1.5'
 gem 'pg'
-gem 'unicorn'
+gem 'puma'
+gem 'puma-heroku'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -12,7 +14,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'spring',        group: :development
 
 #my gems
 gem 'devise'
@@ -25,6 +26,7 @@ group :test do
 end
 
 group :development do
+  gem 'spring'
   gem 'better_errors'
 end
 
@@ -33,4 +35,8 @@ group :test, :development do
   gem 'pry'
   gem 'pry-doc'
   gem 'factory_girl_rails'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

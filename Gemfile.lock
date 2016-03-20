@@ -73,7 +73,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -91,6 +90,9 @@ GEM
     pry-doc (0.8.0)
       pry (~> 0.9)
       yard (~> 0.8)
+    puma (3.1.1)
+    puma-heroku (1.0.0)
+      puma (~> 3.0)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -104,12 +106,16 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.5)
       sprockets-rails (~> 2.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.1.5)
       actionpack (= 4.1.5)
       activesupport (= 4.1.5)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.13.0)
     rake (10.5.0)
     rdoc (4.2.1)
       json (~> 1.4)
@@ -172,10 +178,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.3)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     warden (1.2.6)
       rack (>= 1.0)
     yard (0.8.7.6)
@@ -196,7 +198,10 @@ DEPENDENCIES
   pg
   pry
   pry-doc
+  puma
+  puma-heroku
   rails (= 4.1.5)
+  rails_12factor
   rspec-rails
   sass-rails
   sdoc (~> 0.4.0)
@@ -204,7 +209,6 @@ DEPENDENCIES
   spring
   turbolinks
   uglifier (>= 1.3.0)
-  unicorn
 
 BUNDLED WITH
    1.11.2
