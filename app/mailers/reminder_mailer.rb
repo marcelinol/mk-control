@@ -1,5 +1,5 @@
 class ReminderMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "lembrete@zengirls.com.br"
 
   def two_days_contact_reminder(consultant)
     @consultant = consultant
