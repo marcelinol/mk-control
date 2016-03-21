@@ -16,7 +16,7 @@ class Request < ActiveRecord::Base
   def load_file(file_path)
     File.open(file_path, 'r') do |file|
       CSV.foreach(file, headers: true) do |row|
-        quantity = row["Quantidade Solicitada/Enviada/Cancelada"].match(/^\d/)[0].to_i
+        quantity = row["Quantidade Solicitada/Enviada/Cancelada"].match(/^\d[^0]/)[0].to_i
         quantity.times do
           sales_price = BigDecimal.new(row["Preço unitário de varejo"])
           params = {
