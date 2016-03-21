@@ -8,6 +8,7 @@
     <th>Nome</th>
     <th>Conheço de onde?</th>
     <th>Status</th>
+    <th>Próximo contato</th>
     <th>Último contato</th>
   </tr>
   <% @customers.each do |customer| %>
@@ -15,7 +16,9 @@
       <td><%= customer.name %></td>
       <td><%= customer.source %> </td>
       <td><%= customer.status %></td>
-      <td><%= customer.last_contact_date..try(:strftime, "%d, %B %Y") %></td>
+      <% next_contact_date = customer.next_contact_date.try(:strftime, "%d, %B %Y") %>
+      <td><%= link_to next_contact_date, schedule_contact_with_customer_path(customer)  %></td>
+      <td><%= customer.last_contact_date.try(:strftime, "%d, %B %Y") %></td>
     </tr>
   <% end %>
 </table>
