@@ -20,6 +20,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'simple_form'
 gem 'enum_help' # Used to handle enum fields in simple_form
+gem 'sidekiq'
 
 group :test do
   gem "codeclimate-test-reporter", require: nil
