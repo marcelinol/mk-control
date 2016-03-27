@@ -16,7 +16,8 @@ RSpec.describe Customer, :type => :model do
 
   context 'callbacks' do
     context '#schedule_next_contact' do
-      let(:customer) { build(:customer) }
+      let(:consultant) { create(:consultant) }
+      let(:customer)   { build(:customer, consultant: consultant) }
 
       it 'schedules next contact' do
         customer.next_contact_date = 2.days.from_now
