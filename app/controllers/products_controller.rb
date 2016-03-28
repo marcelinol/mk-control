@@ -11,11 +11,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = current_user.consultant.products.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = current_user.consultant.products.find(params[:id])
 
     if @product.update_attributes(product_params)
       flash[:success] = "Produto editado com sucesso!"

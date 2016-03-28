@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_user.consultant.customers.find(params[:id])
 
     if @customer.update_attributes(customer_params)
       flash[:success] = "Profile updated"
