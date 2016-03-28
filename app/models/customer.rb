@@ -11,7 +11,7 @@ class Customer < ActiveRecord::Base
   private
 
   def schedule_next_contact
-    ReminderWorker.perform_at(next_contact_date, consultant.id)
+    ReminderWorker.perform_at(next_contact_date, consultant.id, self.id)
   end
 
 end
