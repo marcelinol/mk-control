@@ -42,4 +42,6 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'informant-rails'
+  gem 'newrelic_rpm'
 end
