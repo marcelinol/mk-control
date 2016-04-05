@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
 
   after_save :schedule_next_contact, if: 'next_contact_date_changed?'
 
-  scope :must_contact_today, -> { where("next_contact_date BETWEEN '#{DateTime.now.beginning_of_day}' AND '#{DateTime.now.end_of_day}'") }
+  scope :must_contact_today, -> { where("next_contact_date BETWEEN ? AND ?", DateTime.now.beginning_of_day, DateTime.now.end_of_day) }
 
   private
 
