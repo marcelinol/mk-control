@@ -10,9 +10,15 @@
 </div>
 
 <div class='row large-4'>
+  <% if @customer.sales.exists? %>
+    <% next_contact_suggestion = @customer.sales.last.created_at + 2.days %>
+  <% else %>
+    <% next_contact_suggestion = 2.days.from_now %>
+  <% end %>
+
   <%= form_for @customer, url: update_customer_path(@customer) do |f| %>
     <p>Quando será esse contato?
-    <p><%= f.date_field :next_contact_date, value: (@customer.sales.last.created_at + 2.days).to_date %>
+    <p><%= f.date_field :next_contact_date, value: next_contact_suggestion.to_date %>
     <p>Alguma observação adicional?
     <p><%= f.text_area :observations %>
     <p align='right'><%= f.submit "Salvar data do próximo contato", class: 'button' %>
