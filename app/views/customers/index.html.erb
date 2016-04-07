@@ -16,7 +16,7 @@
       <td><%= customer.name %></td>
       <td><%= customer.source %> </td>
       <td><%= customer.status %></td>
-      <% next_contact_date = customer.next_contact_date.try(:strftime, "%d, %B %Y") %>
+      <% next_contact_date = customer.next_contact_date.try(:strftime, "%d, %B %Y") || "Agendar contato" %>
       <td><%= link_to next_contact_date, schedule_contact_with_customer_path(customer)  %></td>
       <td><%= customer.last_contact_date.try(:strftime, "%d, %B %Y") %></td>
     </tr>
