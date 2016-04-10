@@ -8,6 +8,7 @@
     <tr class='mk-color-on-white'>
       <th>Nome</th>
       <th>Conheço de onde?</th>
+      <th>Celular</th>
       <th>Endereço</th>
       <th>Próximo contato</th>
       <th>Último contato</th>
@@ -15,7 +16,8 @@
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
-        <td><%= customer.source %> </td>
+        <td><%= customer.source %></td>
+        <td><%= customer.cellphone %></td>
         <td><%= customer.address %></td>
         <% next_contact_date = customer.next_contact_date.try(:strftime, "%d, %B %Y") || "Agendar contato" %>
         <td><%= link_to next_contact_date, schedule_contact_with_customer_path(customer)  %></td>
