@@ -11,5 +11,8 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
+ENV['CODACY_PROJECT_TOKEN'] = "f7135fe3a4df41fd949b564c09d31354"
+ENV['CODACY_RUN_LOCAL'] = "true"
+
 # Initialize the Rails application.
 Rails.application.initialize!

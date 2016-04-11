@@ -24,6 +24,7 @@ gem 'sidekiq'
 gem 'sinatra'
 gem 'rollbar', '~> 2.8.3'
 gem 'draper', '~> 1.3'
+gem 'codacy-coverage', require: false
 
 group :test do
   gem "codeclimate-test-reporter", require: nil
