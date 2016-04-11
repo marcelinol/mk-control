@@ -4,7 +4,7 @@
       <center><p class='subheader'><strong>Com quem falar hoje</strong></p></center>
       <div class='row'>
         <% @customers_for_today.each do |customer| %>
-          <div class='lead'><%= customer.name %> - <%= customer.cellphone %></div>
+          <div class='lead'><%= link_to customer.name, customer_path(customer) %> - <%= customer.cellphone %></div>
         <% end %>
       </div>
     </div>
