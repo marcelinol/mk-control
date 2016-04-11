@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
     if params[:status]
-      searched_status = params[:status] if Product.statuses.keys.include?(params[:status])
+      searched_status = Product.statuses[params[:status]] if Product.statuses.keys.include?(params[:status])
       @products = Product
         .where(consultant: current_user.consultant)
-        .send(searched_status)
+        .where(status: searched_status)
     else
       @products = Product.where(consultant: current_user.consultant)
     end
