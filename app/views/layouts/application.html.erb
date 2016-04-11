@@ -17,4 +17,11 @@
     <%= yield %>
 
   </body>
+  <footer>
+    <br /><br />
+    <blockquote class='cite text-right' cite="https://www.goodreads.com/author/quotes/24453.Mary_Kay_Ash">
+      <%= I18n.t("mary_kay_ash_quotes.#{rand(1..10)}") %>
+      <cite>Mary Kay Ash</cite>
+    </blockquote>
+  </footer>
 </html>

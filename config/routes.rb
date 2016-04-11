@@ -15,15 +15,15 @@ Rails.application.routes.draw do
   get 'vendas/nova',       to: 'sales#new',    as: 'new_sale'
   get 'vendas/:id/editar', to: 'sales#edit',   as: 'edit_sale'
   get 'vendas/deletar',    to: 'sales#delete', as: 'delete_sale'
-  get 'vendas/:id',        to: 'sales#show',   as: 'show_sale'
+  get 'vendas/:id',        to: 'sales#show',   as: 'sale'
   post 'ventas/criar',     to: 'sales#create', as: 'create_sale'
 
   # Customers
-  get 'clientes',        to: 'customers#index',  as: 'customers_index'
-  get 'clientes/nova',   to: 'customers#new',    as: 'new_customer'
-  get 'clientes/editar', to: 'customers#edit',   as: 'edit_customer'
-  get 'clientes/:id',    to: 'customers#show',   as: 'show_customer'
-  post 'clientes/criar', to: 'customers#create', as: 'create_customer'
+  get 'clientes',            to: 'customers#index',  as: 'customers_index'
+  get 'clientes/nova',       to: 'customers#new',    as: 'new_customer'
+  get 'clientes/:id/editar', to: 'customers#edit',   as: 'edit_customer'
+  get 'clientes/:id',        to: 'customers#show',   as: 'customer'
+  post 'clientes/criar',     to: 'customers#create', as: 'create_customer'
   get 'clientes/:id/agendar-contato', to: 'customers#schedule_contact', as: 'schedule_contact_with_customer'
   patch 'clientes/:id',   to: 'customers#update', as: 'update_customer'
 

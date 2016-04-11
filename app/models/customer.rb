@@ -11,6 +11,9 @@ class Customer < ActiveRecord::Base
   private
 
   def schedule_next_contact
+    logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    logger.info "I am in customer.rb with my customer id: #{self.id}"
+    logger.info "And my consultant is #{consultant.id}"
     ReminderWorker.perform_at(next_contact_date, consultant.id, self.id)
   end
 

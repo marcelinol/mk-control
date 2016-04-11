@@ -1,5 +1,9 @@
 <html>
   Oi, <%= @consultant.name %>.
   <br />
-  Gostaria apenas de lembrá-la que hoje você deve fazer contato com <%= @customer.name  %>.
+  Gostaria apenas de lembrá-la que hoje você deve fazer contato com:
+  <br /><%= @customer.name %>
+  <br />Você conhece ela de <%= @customer.knowledge_source %>
+  <br />Celular: <%= @customer.cellphone %>
+  <br />Telefone: <%= @customer.phone %>
 </html>

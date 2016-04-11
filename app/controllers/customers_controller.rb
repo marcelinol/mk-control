@@ -14,18 +14,28 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer
+      .where(consultant_id: current_user.consultant)
+      .find(params[:id])
+      .decorate
   end
 
   def edit
+    @customer = Customer
+      .where(consultant: current_user.consultant)
+      .find(params[:id])
   end
 
   def update
-    @customer = current_user.consultant.customers.find(params[:id])
+    @customer = Customer
+      .where(consultant: current_user.consultant)
+      .find(params[:id])
 
     if @customer.update_attributes(customer_params)
-      flash[:success] = "Profile updated"
-      redirect_to :root
+      flash[:success] = "Tudo certo!"
+      redirect_to customers_index_path
     else
+      flash[:failure] = "Algo deu errado"
       render nothing: true
     end
   end
@@ -36,6 +46,6 @@ class CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:name, :source, :email, :observations, :next_contact_date)
+    params.require(:customer).permit(:name, :source, :email, :observations, :next_contact_date, :cellphone, :phone, :address)
   end
 end

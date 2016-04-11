@@ -1,13 +1,25 @@
-<h2 class='mk-color-on-white'>ADICIONAR NOVA CLIENTE</h2>
+<div class="row">
+  <h2 class='mk-color-on-white'>ADICIONAR NOVA CLIENTE</h2>
+</div>
 
-<%= form_tag action: "create" do %>
-  <p>Nome:
-  <p><%= text_field :customer, :name %>
-  <p>De onde eu conheço?
-  <p><%= text_field :customer, :source %>
-  <p>Email:
-  <p><%= text_field :customer, :email %>
-  <p>Observações
-  <p><%= text_area :customer, :observations %>
-  <p><%= submit_tag "Criar" %>
-<% end %>
+<div class="row">
+  <div class="large-4 column">
+    <%= form_tag action: "create" do %>
+      <p>Nome:
+      <p><%= text_field :customer, :name %>
+      <p>De onde eu conheço?
+      <p><%= text_field :customer, :source %>
+      <p>Celular:
+      <p><%= text_field :customer, :cellphone %>
+      <p>Telefone fixo:
+      <p><%= text_field :customer, :phone %>
+      <p>Endereço
+      <p><%= text_field :customer, :address %>
+      <p>Email:
+      <p><%= text_field :customer, :email %>
+      <p>Observações
+      <p><%= text_area :customer, :observations %>
+      <p><%= submit_tag "Criar" %>
+    <% end %>
+  </div>
+</div>
