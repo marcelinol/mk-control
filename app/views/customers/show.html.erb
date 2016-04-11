@@ -9,7 +9,7 @@
       <div class='row label'><strong>Conheço de onde<strong></div>
       <p class='row subheader'><%= @customer.knowledge_source %></p>
       <div class='row label'><strong>Endereço</strong></div>
-      <p class='row subheader'><%= @customer.address %></p>
+      <p class='row subheader'><%= link_to_if(@customer.address_link.present?, @customer.address, @customer.address_link) %></p>
       <div class='row label'><strong>Celular</strong></div>
       <p class='row subheader'><%= @customer.cellphone %></p>
       <div class='row label'><strong>Próximo contato</strong></div>
