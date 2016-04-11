@@ -33,7 +33,7 @@
       <% @customer.sales.each do |sale| %>
         <% text = "Venda no valor de R$" + sale.value.to_s %>
         <div class='row subheader'>
-          <%= favicon_link_tag 'piggy_bank.ico' %>
+          <span class='success badge'>$</span>
           <%= link_to text, sale_path(sale) %>
         </div>
         <div class='row subheader'>Data: <%= sale.created_at.to_date %></div>
