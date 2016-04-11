@@ -23,6 +23,7 @@ gem 'enum_help' # Used to handle enum fields in simple_form
 gem 'sidekiq'
 gem 'sinatra'
 gem 'rollbar', '~> 2.8.3'
+gem 'draper', '~> 1.3'
 
 group :test do
   gem "codeclimate-test-reporter", require: nil

@@ -1,24 +1,28 @@
-<h2 class='mk-color-on-white'>
+<h2 class='row mk-color-on-white'>
   CLIENTES
   <%= link_to 'Adicionar nova cliente', new_customer_path, class: 'small primary hollow button' %>
 </h2>
 
-<table border="1" style="width:100%">
-  <tr class='mk-color-on-white'>
-    <th>Nome</th>
-    <th>Conheço de onde?</th>
-    <th>Status</th>
-    <th>Próximo contato</th>
-    <th>Último contato</th>
-  </tr>
-  <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.name %></td>
-      <td><%= customer.source %> </td>
-      <td><%= customer.status %></td>
-      <% next_contact_date = customer.next_contact_date.try(:strftime, "%d, %B %Y") || "Agendar contato" %>
-      <td><%= link_to next_contact_date, schedule_contact_with_customer_path(customer)  %></td>
-      <td><%= customer.last_contact_date.try(:strftime, "%d, %B %Y") %></td>
+<div class="row">
+  <table border="1" style="width:100%">
+    <tr class='mk-color-on-white'>
+      <th>Nome</th>
+      <th>Conheço de onde?</th>
+      <th>Celular</th>
+      <th>Endereço</th>
+      <th>Próximo contato</th>
+      <th>Último contato</th>
     </tr>
-  <% end %>
-</table>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= link_to customer.name, customer_path(customer) %></td>
+        <td><%= customer.source %></td>
+        <td><%= customer.cellphone %></td>
+        <td><%= customer.address %></td>
+        <% next_contact_date = customer.next_contact_date.try(:strftime, "%d, %B %Y") || "Agendar contato" %>
+        <td><%= link_to next_contact_date, schedule_contact_with_customer_path(customer)  %></td>
+        <td><%= customer.last_contact_date.try(:strftime, "%d, %B %Y") %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -3,9 +3,9 @@ class ReminderMailer < ActionMailer::Base
 
   def two_days_contact_reminder(consultant, customer)
     @consultant = consultant
-    @customer = customer
+    @customer = customer.decorate
     consultant_email = @consultant.users.first.email
 
-    mail(to: consultant_email, subject: 'Testing!!')
+    mail(to: consultant_email, subject: "Lembrete de contato com cliente: #{@customer.name}")
   end
 end
