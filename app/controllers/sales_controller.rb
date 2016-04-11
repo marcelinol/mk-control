@@ -25,6 +25,9 @@ class SalesController < ApplicationController
   end
 
   def show
+    @sale = Sale
+      .where(consultant: current_user.consultant)
+      .find(params[:id])
   end
 
   def edit

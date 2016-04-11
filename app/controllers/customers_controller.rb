@@ -14,6 +14,9 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer
+      .where(consultant_id: current_user.consultant)
+      .find(params[:id])
   end
 
   def edit

@@ -1,2 +1,44 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<h2 class='row mk-color-on-white'>
+  <%= @customer.name %>
+</h2>
+
+<div class='row'>
+  <div class='large-6 column'>
+    <p class='lead'><strong>Dados</strong></p>
+    <div class='row large-8'>
+      <div class='row label'><strong>Conheço de onde<strong></div>
+      <p class='row subheader'><%= @customer.source %></p>
+      <div class='row label'><strong>Endereço</strong></div>
+      <p class='row subheader'><%= @customer.address %></p>
+      <div class='row label'><strong>Celular</strong></div>
+      <p class='row subheader'><%= @customer.cellphone %></p>
+      <div class='row label'><strong>Próximo contato</strong></div>
+      <p class='row subheader'><%= @customer.next_contact_date.try(:to_date) %></p>
+      <div class='row label'><strong>Último contato</strong></div>
+      <p class='row subheader'><%= @customer.last_contact_date.try(:to_date) %></p>
+      <div class='row label'><strong>Email</strong></div>
+      <p class='row subheader'><%= @customer.email %></p>
+      <div class='row label'><strong>Telefone Fixo</strong></div>
+      <p class='row subheader'><%= @customer.phone %></p>
+      <div class='row label'><strong>Observações</strong></div>
+      <p class='row subheader'><%= @customer.observations %></p>
+      <div class='row label'><strong>Data de registro da cliente</strong></div>
+      <p class='row subheader'><%= @customer.created_at.to_date %></p>
+    </div>
+  </div>
+
+  <div class='large-6 column'>
+    <p class='lead'>Vendas</p>
+    <div class='row large-6 column'>
+      <% @customer.sales.each do |sale| %>
+        <% text = "Venda no valor de R$" + sale.value.to_s %>
+        <div class='row subheader'>
+          <%= favicon_link_tag 'piggy_bank.ico' %>
+          <%= link_to text, sale_path(sale) %>
+        </div>
+        <div class='row subheader'>Data: <%= sale.created_at.to_date %></div>
+        <br />
+      <% end %>
+    </div>
+  </div>
+</div>

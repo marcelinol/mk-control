@@ -15,7 +15,7 @@
     </tr>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.name %></td>
+        <td><%= link_to customer.name, customer_path(customer) %></td>
         <td><%= customer.source %></td>
         <td><%= customer.cellphone %></td>
         <td><%= customer.address %></td>
