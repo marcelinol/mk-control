@@ -7,15 +7,15 @@
     <p class='lead'><strong>Dados</strong></p>
     <div class='row large-8'>
       <div class='row label'><strong>Conheço de onde<strong></div>
-      <p class='row subheader'><%= @customer.source %></p>
+      <p class='row subheader'><%= @customer.knowledge_source %></p>
       <div class='row label'><strong>Endereço</strong></div>
       <p class='row subheader'><%= @customer.address %></p>
       <div class='row label'><strong>Celular</strong></div>
       <p class='row subheader'><%= @customer.cellphone %></p>
       <div class='row label'><strong>Próximo contato</strong></div>
-      <p class='row subheader'><%= @customer.next_contact_date.try(:to_date) %></p>
+      <p class='row subheader'><%= @customer.next_contact_date %></p>
       <div class='row label'><strong>Último contato</strong></div>
-      <p class='row subheader'><%= @customer.last_contact_date.try(:to_date) %></p>
+      <p class='row subheader'><%= @customer.last_contact_date %></p>
       <div class='row label'><strong>Email</strong></div>
       <p class='row subheader'><%= @customer.email %></p>
       <div class='row label'><strong>Telefone Fixo</strong></div>
