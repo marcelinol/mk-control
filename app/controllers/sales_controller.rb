@@ -39,6 +39,6 @@ class SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit!
+    params.require(:sale).permit(:customer_id, :value, :consultant_id, :created_at, { products_ids: [] })
   end
 end
