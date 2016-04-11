@@ -6,19 +6,19 @@
 <div class="row">
   <table border="1" style="width:100%">
     <tr class='mk-color-on-white'>
+      <th>Editar</th>
       <th>Nome</th>
       <th>Conheço de onde?</th>
       <th>Celular</th>
-      <th>Endereço</th>
       <th>Próximo contato</th>
       <th>Último contato</th>
     </tr>
     <% @customers.each do |customer| %>
       <tr>
+        <td><center><%= link_to "<span class='warning badge'>E</span>".html_safe, edit_customer_path(customer) %></center></td>
         <td><%= link_to customer.name, customer_path(customer) %></td>
         <td><%= customer.source %></td>
         <td><%= customer.cellphone %></td>
-        <td><%= customer.address %></td>
         <% next_contact_date = customer.next_contact_date.try(:strftime, "%d, %B %Y") || "Agendar contato" %>
         <td><%= link_to next_contact_date, schedule_contact_with_customer_path(customer)  %></td>
         <td><%= customer.last_contact_date.try(:strftime, "%d, %B %Y") %></td>

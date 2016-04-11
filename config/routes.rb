@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   post 'ventas/criar',     to: 'sales#create', as: 'create_sale'
 
   # Customers
-  get 'clientes',        to: 'customers#index',  as: 'customers_index'
-  get 'clientes/nova',   to: 'customers#new',    as: 'new_customer'
-  get 'clientes/editar', to: 'customers#edit',   as: 'edit_customer'
-  get 'clientes/:id',    to: 'customers#show',   as: 'customer'
-  post 'clientes/criar', to: 'customers#create', as: 'create_customer'
+  get 'clientes',            to: 'customers#index',  as: 'customers_index'
+  get 'clientes/nova',       to: 'customers#new',    as: 'new_customer'
+  get 'clientes/:id/editar', to: 'customers#edit',   as: 'edit_customer'
+  get 'clientes/:id',        to: 'customers#show',   as: 'customer'
+  post 'clientes/criar',     to: 'customers#create', as: 'create_customer'
   get 'clientes/:id/agendar-contato', to: 'customers#schedule_contact', as: 'schedule_contact_with_customer'
   patch 'clientes/:id',   to: 'customers#update', as: 'update_customer'
 
