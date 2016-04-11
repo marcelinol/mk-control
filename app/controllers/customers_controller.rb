@@ -41,7 +41,9 @@ class CustomersController < ApplicationController
   end
 
   def schedule_contact
-    @customer = Customer.find(params[:id])
+    @customer = Customer
+    .where(consultant: current_user.consultant)
+    .find(params[:id])
   end
 
   private
