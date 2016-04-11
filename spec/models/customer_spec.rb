@@ -29,11 +29,9 @@ RSpec.describe Customer, :type => :model do
 
   context 'scopes' do
     let!(:consultant) { create(:consultant) }
-    let!(:customer)   { create(:customer, next_contact_date: Time.now) }
+    let!(:customer)   { create(:customer, consultant: consultant, next_contact_date: Time.now) }
 
-    before { consultant.customers << customer  }
-
-    it { binding.pry; expect(consultant.customers.must_contact_today.count).to eq 1 }
+    it { expect(consultant.customers.must_contact_today.count).to eq 1 }
 
   end
 
