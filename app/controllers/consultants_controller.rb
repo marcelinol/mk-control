@@ -19,6 +19,6 @@ class ConsultantsController < ApplicationController
   private
 
   def consultant_params
-    params.require(:consultant).permit!
+    params.require(:consultant).permit(:name, :nickname, :email, :outcome, :income)
   end
 end
