@@ -1,2 +1,25 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<div class="row">
+  <h2 class='mk-color-on-white'>ATUALIZAR DADOS DA CLIENTE</h2>
+</div>
+
+<div class="row">
+  <div class="large-4 column">
+    <%= form_tag(update_customer_path(@customer), method: :patch) do %>
+      <p>Nome:
+      <p><%= text_field :customer, :name %>
+      <p>De onde eu conheço?
+      <p><%= text_field :customer, :source %>
+      <p>Celular:
+      <p><%= text_field :customer, :cellphone %>
+      <p>Telefone fixo:
+      <p><%= text_field :customer, :phone %>
+      <p>Endereço
+      <p><%= text_field :customer, :address %>
+      <p>Email:
+      <p><%= text_field :customer, :email %>
+      <p>Observações
+      <p><%= text_area :customer, :observations %>
+      <p><%= submit_tag 'Atualizar' %>
+    <% end %>
+  </div>
+</div>

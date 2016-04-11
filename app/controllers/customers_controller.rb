@@ -21,15 +21,21 @@ class CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer
+      .where(consultant: current_user.consultant)
+      .find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = Customer
+      .where(consultant: current_user.consultant)
+      .find(params[:id])
 
     if @customer.update_attributes(customer_params)
-      flash[:success] = "Profile updated"
-      redirect_to :root
+      flash[:success] = "Tudo certo!"
+      redirect_to customers_index_path
     else
+      flash[:failure] = "Algo deu errado"
       render nothing: true
     end
   end
