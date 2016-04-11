@@ -14,21 +14,6 @@ RSpec.describe CustomersController, :type => :controller do
     end
   end
 
-  describe 'GET schedule_contact' do
-    let(:customer) { create(:customer) }
-
-    before { get :schedule_contact, params: customer }
-
-    xit { (expect(response).to be_success) }
-  end
-
-  describe 'POST update' do
-    let!(:customer) { create(:customer, id: 1) }
-    before { post :update, { customer: { id: 1, next_contact_date: 2.days.from_now.to_date } } }
-
-    xit { (expect(response).to be_success) }
-  end
-
   describe 'GET new' do
     it 'returns http success' do
       get :new

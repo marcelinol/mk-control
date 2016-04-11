@@ -1,7 +1,10 @@
 class ProductsController < ApplicationController
   def index
     if params[:status]
-      @products = Product.where(consultant: current_user.consultant).send(params[:status])
+      searched_status = Product.statuses[params[:status]] if Product.statuses.keys.include?(params[:status])
+      @products = Product
+        .where(consultant: current_user.consultant)
+        .where(status: searched_status)
     else
       @products = Product.where(consultant: current_user.consultant)
     end
@@ -11,11 +14,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = current_user.consultant.products.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = current_user.consultant.products.find(params[:id])
 
     if @product.update_attributes(product_params)
       flash[:success] = "Produto editado com sucesso!"
@@ -36,6 +39,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit!
+    params.require(:product).permit(:code, :name, :purchase_price, :sales_price, :points, :product_type, :status, :request_id, :consultant_id, :sale_id)
   end
 end

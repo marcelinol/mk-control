@@ -9,12 +9,16 @@ class RequestsController < ApplicationController
   def upload
     uploaded_io = params[:request_csv]
     file_path = Rails.root.join('public', 'uploads', uploaded_io.original_filename)
-    File.open(file_path, 'wb') do |file|
-      file.write(uploaded_io.read)
+    if File.exist?(file_path)
+      File.open(file_path, 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+
+      Request.create(consultant: current_user.consultant).import_list(file_path)
+
+      redirect_to products_path, status: 301
+    else
+      redirect_to new_request, status: 411
     end
-
-    Request.create(consultant: current_user.consultant).import_list(file_path)
-
-    redirect_to products_path, status: 301
   end
 end

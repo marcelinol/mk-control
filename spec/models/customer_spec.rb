@@ -27,4 +27,12 @@ RSpec.describe Customer, :type => :model do
     end
   end
 
+  context 'scopes' do
+    let!(:consultant) { create(:consultant) }
+    let!(:customer)   { create(:customer, consultant: consultant, next_contact_date: Time.now) }
+
+    it { expect(consultant.customers.must_contact_today.count).to eq 1 }
+
+  end
+
 end
