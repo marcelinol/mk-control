@@ -18,7 +18,7 @@ class RequestsController < ApplicationController
 
       redirect_to products_path, status: 301
     else
-      redirect_to new_request, status: 411
+      redirect_to new_request_path, status: 411
     end
   end
 end
